@@ -10,9 +10,21 @@ dayjs.extend(relativeTime);
 
 import { RouterOutputs, api } from "~/utils/api";
 import { LoadingPage } from "~/components/loading";
+import { useState } from "react";
 
 const CreatePostWizard = () => {
   const { user } = useUser()
+
+  const [input, setInput] = useState("");
+
+  const ctx = api.useContext();
+
+  const {mutate, isLoading: isPosting} = api.posts.create.useMutation({
+    onSuccess: () => {
+      setInput("");
+      void ctx.posts.getAll.invalidate();
+    }
+  });
 
   if (!user) return null
 
@@ -20,9 +32,17 @@ const CreatePostWizard = () => {
     <div className="flex gap-4 w-full">
       {/* <Image src={user.profileImageUrl} alt="Profile image" className="w-12 h-12 rounded-full" width={56} height={56}/> */}
       <UserButton />
-      <input placeholder="What's on your mind?" className="bg-transparent grow outline-none" />
+      <input 
+        placeholder="What's on your mind?" 
+        className="bg-transparent grow outline-none"
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        disabled={isPosting}
+      />
+      <button onClick={() => mutate({ content: input})}>Post</button>
     </div>
-    ) 
+  ) 
 }
 
 
@@ -38,10 +58,10 @@ const PostView = (props: PostWithUser) => {
         <span>{`@${author.username}`}</span>
         <span className="font-thin">{dayjs(post.createdAt).fromNow()}</span>
       </div>
-      <span>{post.content}</span>
+      <span className="text-xl">{post.content}</span>
     </div>
-    </div>
-    )
+  </div>
+  )
 }
 
 const Feed = () => {
@@ -53,7 +73,7 @@ const Feed = () => {
 
   return (
     <div className="flex flex-col">
-      {data?.map((fullPost) => (
+      {data.map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
     </div>
