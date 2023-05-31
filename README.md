@@ -1,28 +1,17 @@
-# Create T3 App
+# Squeak
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Squeak is a minimalistic Twitter clone developed as a personal project aimed at improving programming skills. It provides a simplified version of the popular social media platform, allowing users to post and interact with other users' posts.
 
-## What's next? How do I make an app with this?
+### Features
+- User Registration and Authentication: Users can create accounts and securely log in to Squeak.
+- Posting: Users can compose and publish short messages (1-280 characters).
+- Timeline and User Profiles: Squeak offers a timeline to view the latest posts from all users and explore individual user profiles.
+- Spam prevention: An individual user cannot post more than 3 times per minute.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### Technologies Used
+Squeak is built using the following technologies and tools:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+HTML, Tailwind, TypeScript, React.js and Next.js
+Database: Prisma, PlanetScale, Axiom and Upstash
+Version Control: Git and GitHub for source code management
+Deployment: The application is hosted on Vercel.
